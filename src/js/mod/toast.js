@@ -8,9 +8,10 @@ class Toast {
     }
 
     createToast() {
-        let element = $(`<div id='toast'>${this.string}</div>`);
+        let element = $(`<div class='toast'>${this.string}</div>`);
         this.$toast = $(element);
         $('body').append(this.$toast);
+        // $('#content').append(this.$toast);
         this.$toast.hide();
     }
     showToast() {
@@ -27,4 +28,5 @@ function toast(string, time) {
     return new Toast(string, time);
 }
 
+window.Toast = toast;
 module.exports.Toast = toast;

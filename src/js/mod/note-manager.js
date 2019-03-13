@@ -10,12 +10,13 @@ let NoteManager = (function () {
             .done(function (ret) {
                 if (ret.status === 0) {
                     $.each(ret.data, function (id, article) {
+                        
                         new Note({
-                            id: id,
-                            context: article
+                            id: article.id,
+                            context: article.text,
+                            username: article.username
                         });
                     });
-
                     Event.fire('waterfall');
                 } else {
                     Toast(ret.errorMsg);

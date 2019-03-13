@@ -1,4 +1,5 @@
 require('less/index.less');
+require("less/toast.less");
 
 const NoteManager = require('mod/note-manager.js').NoteManager;
 const Event = require("mod/event.js");

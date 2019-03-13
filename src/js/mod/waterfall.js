@@ -42,13 +42,15 @@ let Waterfall = (function() {
         })
     
         // 窗口变化改变布局
-        let isRender;
+        // let isRender;
+        // $(window).on('resize', function () {
+        //     isRender = setTimeout(() => {
+        //         render(arg1);
+        //         clearTimeout(isRender);
+        //     }, 500);
+        // })
         $(window).on('resize', function () {
-            isRender = setTimeout(() => {
-                render(arg1);
-                clearTimeout(isRender);
-            }, 500);
-
+            render(arg1);
         })
     }
 

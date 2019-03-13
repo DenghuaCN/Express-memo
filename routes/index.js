@@ -15,7 +15,9 @@ router.get('/', function(req, res, next) {
   //   }
   // }
   // console.log(data)
-  res.render('index');
+
+
+  res.render('index', {title: "hahahah"})
 });
 
 module.exports = router;
