@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer')
 
 module.exports = {
     entry: path.join(__dirname, 'js/app/index.js'),
@@ -9,12 +10,14 @@ module.exports = {
         filename: 'index.js'
     },
     module: {
-        rules: [
-            {
-                test: /\.less$/,
-                use: ['style-loader', 'css-loader', 'less-loader']
-            }
-        ]
+        rules: [{
+            test: /\.less$/,
+            // use: ['style-loader', 'css-loader', 'less-loader']
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ["css-loader", "less-loader", "postcss-loader"]
+            })  // 把 css 抽离出来生成一个文件
+        }]
     },
     resolve: {
         alias: {
@@ -27,6 +30,15 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
-        })       
+        }),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [
+                    autoprefixer(),
+                ]
+            }
+        }),
+        new ExtractTextPlugin('../css/style.css')
     ]
 }
+

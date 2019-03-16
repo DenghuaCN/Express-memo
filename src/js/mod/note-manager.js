@@ -9,6 +9,9 @@ let NoteManager = (function () {
         $.get('/api/notes')
             .done(function (ret) {
                 if (ret.status === 0) {
+
+                    console.log("GET /api/notes/ data",ret);
+
                     $.each(ret.data, function (id, article) {
                         
                         new Note({

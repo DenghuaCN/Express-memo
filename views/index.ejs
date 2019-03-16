@@ -3,24 +3,23 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title><%= title %></title>
+    <title>Sticky Note</title>
     <link rel='stylesheet' href='/css/style.css' />
   </head>
   <body>
-
 
     <div id="header">
       <a href="#" title="添加笔记" class="add-note" id="add_note"><span class="fa fa-plus">添加</span></a>
 
       <ul class="user-area">
-
-          <li id="logout"><a class="login"  href="/auth/logout">GitHub登录</a></li>
-          <li id="logout"><a class="logout"  href="/auth/logout">注销</a></li>
-
-        <!-- <li><img src="https://i.loli.net/2019/03/12/5c86aa7fd57fd.jpg" alt=""></li>
-        <li><span title="DenghuaCN">DenghuaCN</span></li>
-        <li id="logout"><a class="logout"  href="/auth/logout">注销</a></li> -->
-        
+        <% if (isLogin){ %>
+            <li><img src="<%= user.avatar %>" alt=""></li>
+            <li><span title="<%= username %>"><%= username %></span></li>
+            <li><span class="line"> | </span> </li>
+            <li id="logout"><a class="logout" href="/auth/logout">注销</a></li>
+        <%} else { %>
+            <li id="login"><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a></li>
+        <% } %>
       </ul>
 
     </div>
@@ -29,7 +28,7 @@
 
     </div>
 
-    <!-- <div class="stars"></div> -->
+    <!-- <div class="background"></div> -->
     
     <script src="/js/index.js"></script>
   </body> 

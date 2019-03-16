@@ -52,8 +52,8 @@ Note.prototype = {
     // if(!this.id)  this.$note.css('bottom', '10px');  //新增放到右边
 
     if(!this.id)  this.$note.css({
-      "left": '40%',
-      "top": '45%',
+      "left": '48%',
+      "top": '48%',
     });     // BUG!!!! 
 
 
@@ -101,7 +101,6 @@ Note.prototype = {
         // 更新保存的值
         self.setLayout();
 
-        console.log(self.id)
         
         if (self.id) {
           self.edit($noteCt.html())
